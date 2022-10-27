@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route')
 const app = express();
-const { default: mongoose } = require('mongoose');
+const  mongoose  = require('mongoose');
 const moment = require('moment');
 mongoose.connect("mongodb+srv://raj_3028:kWaM507ps0Icsdg0@cluster0.pw23ckf.mongodb.net/Project23", {
     useNewUrlParser: true
@@ -32,8 +32,8 @@ app.use('/functionup', route);
 
 app.use(function(req,res){
   var err = new Error('Not Found.') 
-  err.status = 400
-  return res.status(400).send("Path not Found.")
+  err.status = 404
+  return res.status(404).send("Path not Found.")
 })
 app.listen(process.env.PORT || 3001, function () {
     console.log('Express app running on port ' + (process.env.PORT || 3001))
